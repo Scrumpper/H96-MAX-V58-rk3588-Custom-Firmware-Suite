@@ -49,7 +49,7 @@ or an image will still be offered.
 - **rkdeveloptool** on your PATH (the flashers talk to the box over USB)
   - Arch: `yay -S rkdeveloptool`  ·  Debian/Ubuntu: build from `github.com/rockchip-linux/rkdeveloptool`
 - A **USB-A ↔ USB-A** cable to the box, and the box in **Maskrom** mode (the flashers walk you
-  through it. Power off, hold the pinhole reset in the AV jack, plug USB, connect power, release).
+  through it. Power off, hold the pinhole reset in the AV jack, plug USB, connect power, release pinhole).
 - Linux or macOS. (Windows: use the flashers from WSL, or Rockchip's RKDevTool GUI.)
 
 ## ⚠️ Flashing wipes the box
