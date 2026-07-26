@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- androidboox: TV-box vendor omits app_widgets -> null AppWidgetManager ->
+     Trebuchet/Eleven NPE crash-loop ("blinking"). Declaring it fixes them. -->
+<permissions>
+    <feature name="android.software.app_widgets" />
+</permissions>

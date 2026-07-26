@@ -1,0 +1,50 @@
+# androidboox: this RK3588 TV box has no working suspend/resume -> Android's
+# screen-off suspend looks like a power-off. Force always-on at every boot.
+service androidboox-tvbox /system/bin/sh /system/etc/androidboox-tvbox.sh
+    class late_start
+    user root
+    group root shell
+    disabled
+    oneshot
+    seclabel u:r:su:s0
+
+# androidboox: front-panel display. Writes the 5-byte segment buffer to
+# /dev/digital_dis (the FD650/TM1650 VFD). Shows the clock (HHMM + blinking colon)
+# AND drives the indicator icons from live system state: ethernet (eth0 link),
+# WIFI (wlan0 link), USB (a USB drive attached), play (audio playing). Replaces the
+# stock clock-only 'datadis' writer (the vanilla GSI dropped it, so the panel was
+# stuck on U-Boot's "boot"). Persistent daemon (init restarts it if it dies); NOT oneshot.
+service androidboox-frontpanel /system/bin/androidboox-frontpanel
+    class late_start
+    user root
+    group root system
+    disabled
+    seclabel u:r:su:s0
+
+# androidboox: reliable "right-click = Back" for any mouse. Native daemon reads raw
+# mouse events and injects a clean BACK via uinput on a SHORT right-click; a LONG-press
+# right-click passes through as a real right-click (context menu). Replaces the flaky
+# keylayout remap. Persistent daemon (init restarts it if it dies); NOT oneshot.
+service androidboox-mouseback /system/bin/androidboox-mouseback
+    class late_start
+    user root
+    group root input
+    disabled
+    seclabel u:r:su:s0
+
+# androidboox: "Win+H = HOME" for any keyboard. Native daemon reads raw keyboard events
+# and injects a clean HOME via uinput when the Meta/Windows key is held and H is pressed
+# (Meta+H is not a default Launcher3 home shortcut on the GSI, so it otherwise just fires
+# the GMS-less assist gesture). Passive read, keeps normal typing. NOT oneshot.
+service androidboox-homekey /system/bin/androidboox-homekey
+    class late_start
+    user root
+    group root input
+    disabled
+    seclabel u:r:su:s0
+
+on property:sys.boot_completed=1
+    start androidboox-tvbox
+    start androidboox-frontpanel
+    start androidboox-mouseback
+    start androidboox-homekey

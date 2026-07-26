@@ -1,0 +1,29 @@
+# Build the H96 Max V58 LineageOS-23 helper daemons for Android (aarch64, static).
+#
+# The source files are lineageos23-*.c (repo-clear naming). They compile to the
+# runtime binary names the init .rc + build-super.sh expect (androidboox-*), which
+# get baked to /system/bin/ inside the image.
+#
+#   make                              # uses an aarch64 cross-gcc (set CROSS if needed)
+#   make CROSS=aarch64-linux-android31-   # e.g. an Android NDK toolchain prefix
+#
+# These are freestanding C using Linux uapi + bionic-safe libc calls; -static so they
+# run on Android without a matching libc.
+
+CROSS  ?= aarch64-linux-gnu-
+CC     := $(CROSS)gcc
+CFLAGS := -O2 -Wall -static -s
+
+BINS := androidboox-frontpanel androidboox-mouseback androidboox-homekey
+
+all: $(BINS)
+
+androidboox-frontpanel: lineageos23-frontpanel.c
+	$(CC) $(CFLAGS) -o $@ $<
+androidboox-mouseback: lineageos23-mouseback.c
+	$(CC) $(CFLAGS) -o $@ $<
+androidboox-homekey: lineageos23-homekey.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+clean:
+	rm -f $(BINS)

@@ -1,0 +1,31 @@
+H96 Max V58 — LineageOS 23 bring-up — License
+=============================================
+
+SPDX-License-Identifier: GPL-2.0-only
+
+The code in this repository — the build script, the init service and boot script,
+the front-panel and input daemons (C), the device permission XML, and the docs — is
+licensed under the GNU General Public License, version 2.
+
+    This program is free software; you can redistribute it and/or modify it under the
+    terms of the GNU General Public License version 2 as published by the Free Software
+    Foundation.
+
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY
+    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+    PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+Full text: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+
+The front-panel daemon is derived from a GPL-2.0 Rockchip/Android kernel driver
+(TM1650 front display), hence GPL-2.0 for this repository's code.
+
+NOT covered by this license and NOT included in this repository:
+  * The LineageOS / AOSP Android 16 GSI — download it from LineageOS; it carries its
+    own licenses (Apache-2.0 and others).
+  * The Rockchip RK3588 vendor firmware (vendor/odm/product partitions) — taken from
+    the box's own stock firmware by the person building the image.
+  * Any third-party APKs you choose to bake — each under its own license.
+
+Unofficial community work. Not affiliated with, endorsed by, or supported by LineageOS,
+Rockchip, or the H96 manufacturer. No warranty.
