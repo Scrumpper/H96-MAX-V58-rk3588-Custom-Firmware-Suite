@@ -34,7 +34,8 @@ Scrumpper's H96 Max V58 Firmware Suite/
 ├── README.md
 ├── H96 MAX V58 Stripped Stock Android/     ← Android 12, Google/Play (recommended)
 ├── LineageOS 23 (Android 16)/              ← newest Android
-└── Unofficial Armbian v6.2/                ← Linux, console base, desktop on demand
+├── Unofficial Armbian v6.2/                ← previous Linux release
+└── Unofficial Armbian v8.0/                ← Linux, console base, desktop on demand
 ```
 
 Each build folder is **self-contained**: it holds its own image(s) + `flash.py` (plus
