@@ -1,7 +1,7 @@
 # Scrumpper's H96 Max V58 Firmware Suite
 
-One-stop installer for custom firmware on **H96 Max V58** (Rockchip RK3588) TV box.
-Run one script, pick build, flash it.
+Menu-driven installer for custom firmware on **H96 Max V58** (Rockchip RK3588) TV box.
+It lists the builds it finds; choose one and it flashes the box over USB.
 
 ```
    ██╗  ██╗ █████╗  ██████╗    ██╗   ██╗███████╗ █████╗
@@ -22,7 +22,7 @@ Pick build from menu → confirm → it flashes.
 
 ## Layout
 
-REQUIRED: Extract all .zip files into one folder as listed below.
+REQUIRED: Extract all .zip files into the suite folder shown below.
 
 Each build lives in **its own sub-folder** next to `install.py`, named after build.
 Menu auto-detects whatever folders are present, so you can add or remove builds freely:
@@ -38,7 +38,7 @@ Scrumpper's H96 Max V58 Firmware Suite/
 └── Unofficial Armbian v8.0/                ← Linux, console base, desktop on demand
 ```
 
-Each build folder is **self-contained**: it holds its own image(s) + `flash.py` (plus
+Build folders are **self-contained**: each holds its own image(s) + `flash.py` (plus
 `MiniLoaderAll.bin` and any partition files it needs). Menu runs that folder's flasher.
 Folder names are matched loosely (case/punctuation don't matter); any folder with `flash*.py`
 or image will still be offered.
@@ -48,7 +48,7 @@ or image will still be offered.
 - **Python 3.6+**
 - **rkdeveloptool** on your PATH (flashers talk to box over USB)
   - Arch: `yay -S rkdeveloptool` · Debian/Ubuntu: build from `github.com/rockchip-linux/rkdeveloptool`
-- **USB-A ↔ USB-A** cable to box, and box in **Maskrom** mode (flashers walk you
+- **USB-A ↔ USB-A** cable to box, and box in **Maskrom** mode (flashers guide you
   through it. Power off, hold pinhole reset button (rear panel, in gap between two WiFi antenna posts), plug USB, connect power, release).
 - Linux or macOS. (Windows: use flashers from WSL, or Rockchip's RKDevTool GUI.)
 
